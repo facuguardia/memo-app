@@ -20,15 +20,6 @@ const App = () => {
   const [matched, setMatched] = useState([]);
   const [score, setScore] = useState(0);
 
-  // Funcion que se ejecuta cuando se inicia el juego y se mezclan las cartas
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * (i + 1));
-      [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
-    }
-    return array;
-  }
-
   // Funcion que se ejecuta cuando se seleccionan 2 cartas
   React.useEffect(() => {
     if (selectedCard.length < 2) return;
@@ -56,7 +47,6 @@ const App = () => {
     setSelectedCard([]);
     setScore(0);
   };
-
 
   return (
     <View style={styles.container}>
@@ -94,6 +84,15 @@ const App = () => {
     </View>
   );
 };
+
+// Funcion que se ejecuta cuando se inicia el juego y se mezclan las cartas
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+  return array;
+}
 
 const styles = StyleSheet.create({
   container: {
